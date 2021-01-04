@@ -9,13 +9,19 @@ public class EnemyController : MonoBehaviour
     public float speed;
 
     public GameObject bullet;
-    public float fireRate = 0.997f;
+    public float fireRate = 0.95f;
+
+    public int ligne;
+    public int colonne;
+
 
     // Start is called before the first frame update
     void Start()
     {
         InvokeRepeating("MoveEnemy", 0.1f, 0.3f);
         enemyHolder = GetComponent<Transform>();
+
+
     }
 
     // Update is called once per frame
