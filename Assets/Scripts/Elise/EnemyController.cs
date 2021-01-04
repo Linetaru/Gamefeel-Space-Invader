@@ -8,7 +8,7 @@ public class EnemyController : MonoBehaviour
     private Transform enemyHolder;
     public float speed;
 
-    public GameObject shot;
+    public GameObject bullet;
     public float fireRate = 0.997f;
 
     // Start is called before the first frame update
@@ -41,7 +41,9 @@ public class EnemyController : MonoBehaviour
             //Random fire shoot
             if(Random.value > fireRate)
             {
-                Instantiate(shot, enemy.position, enemy.rotation);
+                GameObject go = Instantiate(bullet, enemy.position, enemy.rotation);
+                go.name = "Bullet";
+                go.GetComponent<Bullet>().bulletParent = BulletParent.Ennemy;
             }
 
 

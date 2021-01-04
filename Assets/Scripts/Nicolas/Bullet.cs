@@ -37,4 +37,24 @@ public class Bullet : MonoBehaviour
                 Destroy(gameObject, 0.1f);
         }
     }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.layer == 9)
+        {
+            if (bulletParent == BulletParent.Player)
+            {
+                Destroy(other.gameObject);
+                Destroy(gameObject);
+            }
+        }
+        else if (other.gameObject.layer == 10)
+        {
+            if (bulletParent == BulletParent.Ennemy)
+            {
+                Destroy(other.gameObject);
+                Destroy(gameObject);
+            }
+        }
+    }
 }

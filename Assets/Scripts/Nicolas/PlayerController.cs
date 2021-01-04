@@ -51,15 +51,4 @@ public class PlayerController : MonoBehaviour
         viewPos.y = Mathf.Clamp(viewPos.y, screenBounds.y * -1 + objectHeight, screenBounds.y - objectHeight);
         transform.position = viewPos;
     }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.gameObject.layer == 8)
-        {
-            if (other.gameObject.GetComponent<Bullet>().bulletParent == BulletParent.Ennemy)
-            {
-                Destroy(this);
-            }
-        }
-    }
 }

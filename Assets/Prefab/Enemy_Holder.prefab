@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 544737419583327702}
   - component: {fileID: 544737419583327703}
   - component: {fileID: 544737419583327700}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy (12)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -142,7 +142,7 @@ GameObject:
   - component: {fileID: 544737419944569600}
   - component: {fileID: 544737419944569601}
   - component: {fileID: 544737419944569606}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy (9)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -272,7 +272,7 @@ GameObject:
   - component: {fileID: 544737419958937128}
   - component: {fileID: 544737419958937129}
   - component: {fileID: 544737419958937134}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy (5)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -402,7 +402,7 @@ GameObject:
   - component: {fileID: 544737419972314628}
   - component: {fileID: 544737419972314629}
   - component: {fileID: 544737419972314634}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy (2)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -532,7 +532,7 @@ GameObject:
   - component: {fileID: 544737420018831038}
   - component: {fileID: 544737420018831039}
   - component: {fileID: 544737420018831036}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy (13)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -662,7 +662,7 @@ GameObject:
   - component: {fileID: 544737420148451309}
   - component: {fileID: 544737420148451090}
   - component: {fileID: 544737420148451091}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy (6)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -792,7 +792,7 @@ GameObject:
   - component: {fileID: 544737420541571252}
   - component: {fileID: 544737420541571253}
   - component: {fileID: 544737420541571258}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy (3)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -922,7 +922,7 @@ GameObject:
   - component: {fileID: 544737420891108664}
   - component: {fileID: 544737420891108661}
   - component: {fileID: 544737420891108666}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -1052,7 +1052,7 @@ GameObject:
   - component: {fileID: 544737421045950974}
   - component: {fileID: 544737421045950975}
   - component: {fileID: 544737421045950972}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy (7)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -1182,7 +1182,7 @@ GameObject:
   - component: {fileID: 544737421059527092}
   - component: {fileID: 544737421059527093}
   - component: {fileID: 544737421059527098}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy (11)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -1312,7 +1312,7 @@ GameObject:
   - component: {fileID: 544737421247323679}
   - component: {fileID: 544737421247323676}
   - component: {fileID: 544737421247323677}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy (1)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -1442,7 +1442,7 @@ GameObject:
   - component: {fileID: 544737421351073208}
   - component: {fileID: 544737421351073209}
   - component: {fileID: 544737421351073214}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy (8)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -1572,7 +1572,7 @@ GameObject:
   - component: {fileID: 544737421469550735}
   - component: {fileID: 544737421469550732}
   - component: {fileID: 544737421469550733}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy (10)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -1770,7 +1770,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.5
-  shot: {fileID: 448382912551733204, guid: 8d6146d608725be4f96194102c88ac85, type: 3}
+  bullet: {fileID: 2685337641061627618, guid: e28f8b456ec228c488004e80d9d51251, type: 3}
   fireRate: 0.92
 --- !u!1 &544737421563182700
 GameObject:
@@ -1784,7 +1784,7 @@ GameObject:
   - component: {fileID: 544737421563182696}
   - component: {fileID: 544737421563182697}
   - component: {fileID: 544737421563182702}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy (4)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
