@@ -121,4 +121,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 794b30162dd76d3439a3ea47a4275b34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletParent: 0
+  bulletParent: 1
