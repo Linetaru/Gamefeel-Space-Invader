@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public GameObject Bullet;
+
     private Vector2 screenBounds;
     private float objectWidth;
     private float objectHeight;
@@ -19,7 +21,23 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        if(Input.GetKey(KeyCode.RightArrow))
+        Movement();
+        Attack();
+    }
+
+    void Attack()
+    {
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            GameObject go = Instantiate(Bullet, transform.position, Quaternion.identity);
+            go.name = "Bullet";
+            go.GetComponent<Bullet>().bulletParent = BulletParent.Player;
+        }
+    }
+
+    void Movement()
+    {
+        if (Input.GetKey(KeyCode.RightArrow))
         {
             transform.Translate(new Vector2(5 * Time.deltaTime, 0));
         }
@@ -32,5 +50,16 @@ public class PlayerController : MonoBehaviour
         viewPos.x = Mathf.Clamp(viewPos.x, screenBounds.x * -1 + objectWidth, screenBounds.x - objectWidth);
         viewPos.y = Mathf.Clamp(viewPos.y, screenBounds.y * -1 + objectHeight, screenBounds.y - objectHeight);
         transform.position = viewPos;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.layer == 8)
+        {
+            if (other.gameObject.GetComponent<Bullet>().bulletParent == BulletParent.Ennemy)
+            {
+                Destroy(this);
+            }
+        }
     }
 }
