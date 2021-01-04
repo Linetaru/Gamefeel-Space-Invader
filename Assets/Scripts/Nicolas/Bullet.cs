@@ -11,6 +11,7 @@ public enum BulletParent{
 public class Bullet : MonoBehaviour
 {
     public BulletParent bulletParent;
+    public float speed = 2f;
 
     private Vector2 screenBounds;
 
@@ -26,13 +27,13 @@ public class Bullet : MonoBehaviour
     {
         if (bulletParent == BulletParent.Player)
         {
-            transform.Translate(new Vector3(0, 5 * Time.deltaTime, 0));
+            transform.Translate(new Vector3(0, 5 * Time.deltaTime * speed, 0));
             if (transform.position.y > screenBounds.y)
                 Destroy(gameObject, 0.1f);
         }
         else if(bulletParent == BulletParent.Ennemy)
         {
-            transform.Translate(new Vector3(0, -5 * Time.deltaTime, 0));
+            transform.Translate(new Vector3(0, -5 * Time.deltaTime * speed, 0));
             if (transform.position.y < screenBounds.y * -1)
                 Destroy(gameObject, 0.1f);
         }

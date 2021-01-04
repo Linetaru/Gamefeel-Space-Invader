@@ -11,9 +11,9 @@ public class EnemyController : MonoBehaviour
     public GameObject bullet;
     public float fireRate = 0.95f;
 
-    public int ligne;
-    public int colonne;
-
+    private int ligne = 5;
+    private int colonne = 10;
+    private List<Transform> list;
 
     // Start is called before the first frame update
     void Start()
@@ -27,7 +27,17 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        list.Clear();
+
+        /*
+        for (int i = 0; i < colonne; i++)
+        {
+            foreach (Transform enemy in enemyHolder)
+            {
+
+
+            }
+        }*/
     }
 
 
