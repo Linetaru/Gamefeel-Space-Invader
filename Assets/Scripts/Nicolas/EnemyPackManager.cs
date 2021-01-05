@@ -29,6 +29,8 @@ public class EnemyPackManager : MonoBehaviour
 
     [Header("Stats Movement")]
     public float baseSpeed = 0.5f;
+    public float accel = 0.1f;
+    public float finalSpeed = 10f;
     [ReadOnly] [SerializeField] private float speed;
     private float timerDown;
     public float timeToDown = 0.75f;
@@ -92,6 +94,11 @@ public class EnemyPackManager : MonoBehaviour
 
     void MovementUpdate()
     {
+
+        speed = baseSpeed + accel * (MaxNumberOfEnemy - CurrentNumberOfEnemy);
+
+        if (CurrentNumberOfEnemy == 1) speed = finalSpeed;
+        /*
         if(CurrentNumberOfEnemy == MaxNumberOfEnemy)
         {
             speed = baseSpeed;
@@ -107,7 +114,7 @@ public class EnemyPackManager : MonoBehaviour
         else
         {
             speed = baseSpeed + 1f;
-        }
+        }*/
 
         switch (phaseMovement)
         {
