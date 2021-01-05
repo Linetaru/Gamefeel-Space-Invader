@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public GameObject Bullet;
+    private GameObject currentBullet;
 
     private Vector2 screenBounds;
     private float objectWidth;
@@ -29,11 +30,11 @@ public class PlayerController : MonoBehaviour
 
     void Attack()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(Input.GetKeyDown(KeyCode.Space) && currentBullet == null)
         {
-            GameObject go = Instantiate(Bullet, transform.position, Quaternion.identity);
-            go.name = "Bullet";
-            go.GetComponent<Bullet>().bulletParent = BulletParent.Player;
+            currentBullet = Instantiate(Bullet, transform.position, Quaternion.identity);
+            currentBullet.name = "Bullet";
+            currentBullet.GetComponent<Bullet>().bulletParent = BulletParent.Player;
         }
     }
 

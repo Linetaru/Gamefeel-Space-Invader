@@ -122,7 +122,11 @@ public class EnemyPackManager : MonoBehaviour
                 transform.Translate(new Vector2(-speed * Time.deltaTime, 0));
                 break;
             case Phase.DownMovement:
-                transform.Translate(new Vector2(0, -speed * Time.deltaTime));
+                transform.position += Vector3.down * 0.5f;
+                if (transform.position.x <= screenBounds.x * -1)
+                    phaseMovement = Phase.RightMovement;
+                else
+                    phaseMovement = Phase.LeftMovement;
                 DownActivated = true;
                 break;
             case Phase.RightMovement:
@@ -155,22 +159,7 @@ public class EnemyPackManager : MonoBehaviour
                 }
             }
         }
-        else
-        {
-            if (timerDown >= timeToDown)
-            {
-                DownActivated = false;
-                if (transform.position.x <= screenBounds.x * -1)
-                    phaseMovement = Phase.RightMovement;
-                else
-                    phaseMovement = Phase.LeftMovement;
-                timerDown = 0;
-            }
-            else
-            {
-                timerDown += Time.deltaTime;
-            }
-        }
+        DownActivated = false;
     }
 
     void AttackUpdate()
