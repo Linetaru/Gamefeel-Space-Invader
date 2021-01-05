@@ -221,6 +221,11 @@ PrefabInstance:
       propertyPath: accel
       value: 0.08
       objectReference: {fileID: 0}
+    - target: {fileID: 1606964766963372705, guid: 1d1189e24741794499a0abdb1f03a6f5,
+        type: 3}
+      propertyPath: fireRate
+      value: 0.75
+      objectReference: {fileID: 0}
     - target: {fileID: 1606964766963372710, guid: 1d1189e24741794499a0abdb1f03a6f5,
         type: 3}
       propertyPath: m_RootOrder
@@ -345,11 +350,5 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6130908887002620239, guid: e3326ac748692ba42b09ea3aedf2fab4,
-        type: 3}
-      propertyPath: Bullet
-      value: 
-      objectReference: {fileID: 2685337641061627618, guid: e28f8b456ec228c488004e80d9d51251,
-        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e3326ac748692ba42b09ea3aedf2fab4, type: 3}
