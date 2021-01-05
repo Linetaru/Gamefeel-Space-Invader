@@ -13,6 +13,7 @@ public class Bullet : MonoBehaviour
     public BulletParent bulletParent;
     public float speed = 2f;
 
+
     private Vector2 screenBounds;
 
     // Start is called before the first frame update
@@ -31,7 +32,7 @@ public class Bullet : MonoBehaviour
             if (transform.position.y > screenBounds.y)
                 Destroy(gameObject, 0.1f);
         }
-        else if(bulletParent == BulletParent.Ennemy)
+        else if (bulletParent == BulletParent.Ennemy)
         {
             transform.Translate(new Vector3(0, -5 * Time.deltaTime * speed, 0));
             if (transform.position.y < screenBounds.y * -1)
@@ -53,9 +54,17 @@ public class Bullet : MonoBehaviour
         {
             if (bulletParent == BulletParent.Ennemy)
             {
-                Destroy(other.gameObject);
+                other.GetComponent<PlayerController>().health -= 1;
+
+                if (other.GetComponent<PlayerController>().health == 0)
+                {
+                    Destroy(other.gameObject);
+                    GameOver.isPlayerDead = true; //Active le Game Over
+                }
+
                 Destroy(gameObject);
             }
         }
     }
+
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum Phase{
     LeftMovement,
@@ -39,6 +40,9 @@ public class EnemyPackManager : MonoBehaviour
 
     public static EnemyPackManager instance;
 
+    public Text winText;
+    public Text restartText;
+
     private void Awake()
     {
         if(instance == null)
@@ -74,6 +78,12 @@ public class EnemyPackManager : MonoBehaviour
     {
         MovementUpdate();
         AttackUpdate();
+
+        if (CurrentNumberOfEnemy == 0)
+        {
+            winText.enabled = true;
+            restartText.enabled = true;
+        }
     }
 
     public void RemoveEnemy(Enemy killedEnemy)
@@ -160,6 +170,7 @@ public class EnemyPackManager : MonoBehaviour
             }
         }
         DownActivated = false;
+
     }
 
     void AttackUpdate()
