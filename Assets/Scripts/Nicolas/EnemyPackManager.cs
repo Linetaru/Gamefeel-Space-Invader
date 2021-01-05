@@ -16,18 +16,24 @@ public class EnemyList
 
 public class EnemyPackManager : MonoBehaviour
 {
+    [Header("Ennemy Pack List by Columns")]
     public List<EnemyList> EnemyPackList;
+    [ReadOnly] [SerializeField] private int CurrentNumberOfEnemy = 0;
+    [ReadOnly] [SerializeField] private int MaxNumberOfEnemy;
 
+    [Header("Stats Attack")]
     public float fireRate = 0.95f;
-    public float speed = 0.5f;
-    private Phase phaseMovement;
+    private float fireRateTimer;
 
     private Vector2 screenBounds;
-    public float timerMax = 2;
-    private float timer;
 
-    private bool DownActivated = false;
+    [Header("Stats Movement")]
+    public float baseSpeed = 0.5f;
+    [ReadOnly] [SerializeField] private float speed;
     private float timerDown;
+    public float timeToDown = 0.75f;
+    private bool DownActivated = false;
+    [ReadOnly] [SerializeField] private Phase phaseMovement;
 
     public static EnemyPackManager instance;
 
@@ -48,6 +54,17 @@ public class EnemyPackManager : MonoBehaviour
     {
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
         phaseMovement = Phase.LeftMovement;
+        foreach (EnemyList list in EnemyPackList)
+        {
+            foreach (Enemy enemy in list.enemiesList)
+            {
+                if (enemy != null)
+                    CurrentNumberOfEnemy++;
+            }
+        }
+        MaxNumberOfEnemy = CurrentNumberOfEnemy;
+        speed = baseSpeed;
+        fireRateTimer = fireRate;
     }
 
     // Update is called once per frame
@@ -57,8 +74,41 @@ public class EnemyPackManager : MonoBehaviour
         AttackUpdate();
     }
 
+    public void RemoveEnemy(Enemy killedEnemy)
+    {
+        foreach (EnemyList list in EnemyPackList)
+        {
+            foreach (Enemy enemy in list.enemiesList)
+            {
+                if (enemy == killedEnemy)
+                {
+                    list.enemiesList.Remove(killedEnemy);
+                    CurrentNumberOfEnemy--;
+                    return;
+                }
+            }
+        }
+    }
+
     void MovementUpdate()
     {
+        if(CurrentNumberOfEnemy == MaxNumberOfEnemy)
+        {
+            speed = baseSpeed;
+        }
+        else if(CurrentNumberOfEnemy <= MaxNumberOfEnemy - 1 && CurrentNumberOfEnemy > MaxNumberOfEnemy - 4)
+        {
+            speed = baseSpeed + 0.2f;
+        }
+        else if(CurrentNumberOfEnemy <= MaxNumberOfEnemy - 5 && CurrentNumberOfEnemy > MaxNumberOfEnemy - 7)
+        {
+            speed = baseSpeed + 0.5f;
+        }
+        else
+        {
+            speed = baseSpeed + 1f;
+        }
+
         switch (phaseMovement)
         {
             case Phase.LeftMovement:
@@ -100,7 +150,7 @@ public class EnemyPackManager : MonoBehaviour
         }
         else
         {
-            if (timerDown >= 0.75)
+            if (timerDown >= timeToDown)
             {
                 DownActivated = false;
                 if (transform.position.x <= screenBounds.x * -1)
@@ -118,7 +168,7 @@ public class EnemyPackManager : MonoBehaviour
 
     void AttackUpdate()
     {
-        if (timer >= timerMax)
+        if (fireRateTimer <= 0)
         {
             int random = Random.Range(0, 10);
             foreach (EnemyList list in EnemyPackList)
@@ -133,11 +183,11 @@ public class EnemyPackManager : MonoBehaviour
                     break;
                 }
             }
-            timer = 0;
+            fireRateTimer = fireRate;
         }
         else
         {
-            timer += Time.deltaTime;
+            fireRateTimer -= Time.deltaTime;
         }
     }
 }

@@ -26,16 +26,6 @@ public class Enemy : MonoBehaviour
 
     private void OnDestroy()
     {
-        foreach (EnemyList list in EnemyPackManager.instance.EnemyPackList)
-        {
-            foreach (Enemy enemy in list.enemiesList)
-            {
-                if (enemy == this)
-                {
-                    list.enemiesList.Remove(this);
-                    return;
-                }
-            }
-        }
+        EnemyPackManager.instance.RemoveEnemy(this);
     }
 }
