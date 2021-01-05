@@ -140,9 +140,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6492284281203808962}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6feb9d785fcbdaa499c38f63dcee701d, type: 3}
+  m_Script: {fileID: 11500000, guid: c512e706d712a884c9741213c11c9096, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ligne: 0
-  colonne: 0
-  canShoot: 0
+  Bullet: {fileID: 2685337641061627618, guid: e28f8b456ec228c488004e80d9d51251, type: 3}

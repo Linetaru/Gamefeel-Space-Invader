@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
     private float objectWidth;
     private float objectHeight;
 
+    public float speed = 5;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,11 +41,11 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            transform.Translate(new Vector2(5 * Time.deltaTime, 0));
+            transform.Translate(new Vector2(speed * Time.deltaTime, 0));
         }
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-            transform.Translate(new Vector2(-5 * Time.deltaTime, 0));
+            transform.Translate(new Vector2(-speed * Time.deltaTime, 0));
         }
 
         Vector3 viewPos = transform.position;
