@@ -11,9 +11,9 @@ public class EnemyController : MonoBehaviour
     public GameObject bullet;
     public float fireRate = 0.95f;
 
-    private int ligne = 5;
+   /* private int ligne = 5;
     private int colonne = 10;
-    private List<Transform> list;
+    private List<Transform> list;*/
 
     // Start is called before the first frame update
     void Start()
@@ -27,7 +27,7 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        list.Clear();
+        //list.Clear();
 
         /*
         for (int i = 0; i < colonne; i++)
@@ -44,9 +44,11 @@ public class EnemyController : MonoBehaviour
     void MoveEnemy()
     {
         enemyHolder.position += Vector3.right * speed;
+        Transform enemyFront;
 
-        foreach(Transform enemy in enemyHolder)
+        foreach (Transform enemy in enemyHolder)
         {
+            enemyFront = EnemyFront(enemy.position.y);
             if(enemy.position.x < -10f || enemy.position.x > 10f)
             {
                 speed = -speed;
@@ -55,9 +57,12 @@ public class EnemyController : MonoBehaviour
             }
 
             //Random fire shoot
-            if(Random.value > fireRate)
+            if(Random.value > fireRate && enemyFront != null)
             {
-                GameObject go = Instantiate(bullet, enemy.position, enemy.rotation);
+                //Debug.Log("Enemy Y" + enemy.position.y);
+                //Debug.Log("Enemy Devant" + enemyFront.position.y);
+
+                GameObject go = Instantiate(bullet, enemyFront.position, enemyFront.rotation);
                 go.name = "Bullet";
                 go.GetComponent<Bullet>().bulletParent = BulletParent.Ennemy;
             }
@@ -79,6 +84,15 @@ public class EnemyController : MonoBehaviour
         {
 
         }
+    }
+
+    Transform EnemyFront(float posX)
+    {
+        foreach (Transform enemy in enemyHolder)
+        {
+            if (enemy.position.x == posX) return enemy;
+        }
+        return null;
     }
 }
  
