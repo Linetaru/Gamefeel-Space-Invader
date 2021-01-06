@@ -13,13 +13,11 @@ public class Bullet : MonoBehaviour
     public BulletParent bulletParent;
     public float speed = 2f;
 
-
     private Vector2 screenBounds;
 
     // Start is called before the first frame update
     void Start()
     {
-
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
     }
 
@@ -54,12 +52,13 @@ public class Bullet : MonoBehaviour
         {
             if (bulletParent == BulletParent.Ennemy)
             {
-                other.GetComponent<PlayerController>().health -= 1;
+                GameManager.instance.playerLife--;
+                Destroy(other.gameObject);
+                GameManager.instance.UpdateLife();
 
-                if (other.GetComponent<PlayerController>().health == 0)
+                if (GameManager.instance.playerLife == 0)
                 {
-                    Destroy(other.gameObject);
-                    GameOver.isPlayerDead = true; //Active le Game Over
+                    GameManager.instance.Defeat();
                 }
 
                 Destroy(gameObject);

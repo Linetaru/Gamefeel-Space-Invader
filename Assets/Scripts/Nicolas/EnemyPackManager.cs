@@ -40,9 +40,6 @@ public class EnemyPackManager : MonoBehaviour
 
     public static EnemyPackManager instance;
 
-    public Text winText;
-    public Text restartText;
-
     private void Awake()
     {
         if(instance == null)
@@ -76,13 +73,14 @@ public class EnemyPackManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        MovementUpdate();
-        AttackUpdate();
-
         if (CurrentNumberOfEnemy == 0)
         {
-            winText.enabled = true;
-            restartText.enabled = true;
+            GameManager.instance.Victory();
+        }
+        if (!GameManager.instance.IsGameOver && !GameManager.instance.GetIsInRespawn())
+        {
+            MovementUpdate();
+            AttackUpdate();
         }
     }
 
@@ -104,7 +102,6 @@ public class EnemyPackManager : MonoBehaviour
 
     void MovementUpdate()
     {
-
         speed = baseSpeed + accel * (MaxNumberOfEnemy - CurrentNumberOfEnemy);
 
         if (CurrentNumberOfEnemy == 1) speed = finalSpeed;

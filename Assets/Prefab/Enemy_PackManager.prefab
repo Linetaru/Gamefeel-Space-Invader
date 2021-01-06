@@ -98,9 +98,15 @@ MonoBehaviour:
     - {fileID: 6687008810670126395}
     - {fileID: 6687008811632516674}
     - {fileID: 6687008811409565365}
-  fireRate: 0.95
+  CurrentNumberOfEnemy: 0
+  MaxNumberOfEnemy: 0
+  fireRate: 0.75
+  baseSpeed: 0.5
+  accel: 0.08
+  finalSpeed: 10
   speed: 0.5
-  timerMax: 2
+  timeToDown: 0.75
+  phaseMovement: 0
 --- !u!1 &3695670235581392607
 GameObject:
   m_ObjectHideFlags: 0
