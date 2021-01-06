@@ -22,15 +22,18 @@ public class PlayerController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void LateUpdate()
+    void Update()
     {
-        Movement();
-        Attack();
+        if (!GameManager.instance.GetIsInRespawn())
+        {
+            Movement();
+            Attack();
+        }
     }
 
     void Attack()
     {
-        if(Input.GetKeyDown(KeyCode.Space) && currentBullet == null)
+        if (Input.GetKeyDown(KeyCode.Space) && currentBullet == null)
         {
             currentBullet = Instantiate(Bullet, transform.position, Quaternion.identity);
             currentBullet.name = "Bullet";

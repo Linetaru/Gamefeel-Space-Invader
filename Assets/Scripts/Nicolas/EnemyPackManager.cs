@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum Phase{
     LeftMovement,
@@ -72,8 +73,15 @@ public class EnemyPackManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        MovementUpdate();
-        AttackUpdate();
+        if (CurrentNumberOfEnemy == 0)
+        {
+            GameManager.instance.Victory();
+        }
+        if (!GameManager.instance.IsGameOver && !GameManager.instance.GetIsInRespawn())
+        {
+            MovementUpdate();
+            AttackUpdate();
+        }
     }
 
     public void RemoveEnemy(Enemy killedEnemy)
@@ -94,7 +102,6 @@ public class EnemyPackManager : MonoBehaviour
 
     void MovementUpdate()
     {
-
         speed = baseSpeed + accel * (MaxNumberOfEnemy - CurrentNumberOfEnemy);
 
         if (CurrentNumberOfEnemy == 1) speed = finalSpeed;
@@ -160,6 +167,7 @@ public class EnemyPackManager : MonoBehaviour
             }
         }
         DownActivated = false;
+
     }
 
     void AttackUpdate()

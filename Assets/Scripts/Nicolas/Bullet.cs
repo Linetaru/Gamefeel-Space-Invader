@@ -18,7 +18,6 @@ public class Bullet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
     }
 
@@ -31,7 +30,7 @@ public class Bullet : MonoBehaviour
             if (transform.position.y > screenBounds.y)
                 Destroy(gameObject, 0.1f);
         }
-        else if(bulletParent == BulletParent.Ennemy)
+        else if (bulletParent == BulletParent.Ennemy)
         {
             transform.Translate(new Vector3(0, -5 * Time.deltaTime * speed, 0));
             if (transform.position.y < screenBounds.y * -1)
@@ -53,9 +52,18 @@ public class Bullet : MonoBehaviour
         {
             if (bulletParent == BulletParent.Ennemy)
             {
+                GameManager.instance.playerLife--;
                 Destroy(other.gameObject);
+                GameManager.instance.UpdateLife();
+
+                if (GameManager.instance.playerLife == 0)
+                {
+                    GameManager.instance.Defeat();
+                }
+
                 Destroy(gameObject);
             }
         }
     }
+
 }
