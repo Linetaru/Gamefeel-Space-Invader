@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
     private bool IsInRespawn;
 
     [ReadOnly] public bool Feature1HeartSound;
-    [ReadOnly] public bool Feature2;
+    [ReadOnly] public bool Feature2SublimImage;
     [ReadOnly] public bool Feature3;
     [ReadOnly] public bool Feature4;
     [ReadOnly] public bool Feature5;
@@ -66,7 +66,7 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q))
             Feature1HeartSound = !Feature1HeartSound;
         if (Input.GetKeyDown(KeyCode.S))
-            Feature2 = !Feature2;
+            Feature2SublimImage = !Feature2SublimImage;
         if (Input.GetKeyDown(KeyCode.D))
             Feature3 = !Feature3;
         if (Input.GetKeyDown(KeyCode.F))

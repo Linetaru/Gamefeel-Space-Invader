@@ -5,12 +5,10 @@ using UnityEngine.UI;
 
 public class SubliminalPicture : MonoBehaviour
 {
-
     public bool isDisplay = false;
     public float displayTimae = 0.5f;
     private float time;
     [SerializeField] private Image sublimImage;
-
 
     // Start is called before the first frame update
     void Start()
@@ -29,20 +27,22 @@ public class SubliminalPicture : MonoBehaviour
             isDisplay = true;
         }
         */
-
-        if (isDisplay)
+        if (GameManager.instance.Feature2SublimImage)
         {
-            sublimImage.enabled = true;
-            time += Time.deltaTime;
-            if (time >= displayTimae)
+            if (isDisplay)
             {
-                isDisplay = false;
-                time = 0f;
+                sublimImage.enabled = true;
+                time += Time.deltaTime;
+                if (time >= displayTimae)
+                {
+                    isDisplay = false;
+                    time = 0f;
+                }
             }
-        }
-        else
-        {
-            sublimImage.enabled = false;
+            else
+            {
+                sublimImage.enabled = false;
+            }
         }
 
     }
