@@ -41,6 +41,7 @@ public class EnemyPackManager : MonoBehaviour
     public static EnemyPackManager instance;
 
     public Image sublim;
+    public GameObject postProcess;
 
     private void Awake()
     {
@@ -94,6 +95,7 @@ public class EnemyPackManager : MonoBehaviour
             {
                 if (enemy == killedEnemy)
                 {
+                    postProcess.GetComponent<PostProcessing>().colorSatur.saturation.value -= 3;
                     sublim.GetComponent<SubliminalPicture>().isDisplay = true;
                     list.enemiesList.Remove(killedEnemy);
                     CurrentNumberOfEnemy--;
