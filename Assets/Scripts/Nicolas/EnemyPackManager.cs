@@ -40,6 +40,8 @@ public class EnemyPackManager : MonoBehaviour
 
     public static EnemyPackManager instance;
 
+    public Image sublim;
+
     private void Awake()
     {
         if(instance == null)
@@ -92,6 +94,7 @@ public class EnemyPackManager : MonoBehaviour
             {
                 if (enemy == killedEnemy)
                 {
+                    sublim.GetComponent<SubliminalPicture>().isDisplay = true;
                     list.enemiesList.Remove(killedEnemy);
                     CurrentNumberOfEnemy--;
                     return;
