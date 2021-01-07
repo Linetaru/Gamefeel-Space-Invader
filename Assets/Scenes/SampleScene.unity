@@ -5150,8 +5150,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3de261741a97194f80ef45b47cf9f33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shakeDurationMax: 2
-  shakeMagnitude: 0.7
+  shakeDurationMax: 1
+  shakeMagnitude: 0.1
   dampingSpeed: 1
 --- !u!1 &966245704
 GameObject:
@@ -5240,13 +5240,34 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3284942484674689935, guid: 59356e99c9097ea4aa9ab3f0df4186c8,
         type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2f9eff61b1be31144b0bc9f1f34569e7,
+        type: 3}
+    - target: {fileID: 3284942484674689935, guid: 59356e99c9097ea4aa9ab3f0df4186c8,
+        type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3549817757816333735, guid: 59356e99c9097ea4aa9ab3f0df4186c8,
+        type: 3}
+      propertyPath: displayTimae
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 5239917125513166571, guid: 59356e99c9097ea4aa9ab3f0df4186c8,
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5669396737049666969, guid: 59356e99c9097ea4aa9ab3f0df4186c8,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 5669396737049666969, guid: 59356e99c9097ea4aa9ab3f0df4186c8,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 1080
       objectReference: {fileID: 0}
     - target: {fileID: 7264738408488814104, guid: 59356e99c9097ea4aa9ab3f0df4186c8,
         type: 3}
