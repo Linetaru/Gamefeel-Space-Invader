@@ -25,6 +25,15 @@ public class GameManager : MonoBehaviour
     private bool IsVictory;
     private bool IsInRespawn;
 
+    [ReadOnly] public bool Feature1HeartSound;
+    [ReadOnly] public bool Feature2;
+    [ReadOnly] public bool Feature3;
+    [ReadOnly] public bool Feature4;
+    [ReadOnly] public bool Feature5;
+    [ReadOnly] public bool Feature6;
+    [ReadOnly] public bool Feature7;
+    [ReadOnly] public bool Feature8;
+
     private void Awake()
     {
         if(instance == null)
@@ -53,6 +62,23 @@ public class GameManager : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
+
+        if (Input.GetKeyDown(KeyCode.Q))
+            Feature1HeartSound = !Feature1HeartSound;
+        if (Input.GetKeyDown(KeyCode.S))
+            Feature2 = !Feature2;
+        if (Input.GetKeyDown(KeyCode.D))
+            Feature3 = !Feature3;
+        if (Input.GetKeyDown(KeyCode.F))
+            Feature4 = !Feature4;
+        if (Input.GetKeyDown(KeyCode.G))
+            Feature5 = !Feature5;
+        if (Input.GetKeyDown(KeyCode.H))
+            Feature6 = !Feature6;
+        if (Input.GetKeyDown(KeyCode.J))
+            Feature7 = !Feature7;
+        if (Input.GetKeyDown(KeyCode.K))
+            Feature8 = !Feature8;
     }
 
     public bool GetIsInRespawn()

@@ -80,7 +80,7 @@ public class EnemyPackManager : MonoBehaviour
         if (!GameManager.instance.IsGameOver && !GameManager.instance.GetIsInRespawn())
         {
             MovementUpdate();
-            AttackUpdate();
+            //AttackUpdate();
         }
     }
 
@@ -129,7 +129,7 @@ public class EnemyPackManager : MonoBehaviour
                 transform.Translate(new Vector2(-speed * Time.deltaTime, 0));
                 break;
             case Phase.DownMovement:
-                transform.position += Vector3.down * 0.5f;
+                transform.position += Vector3.up * 0.5f;
                 if (transform.position.x <= screenBounds.x * -1)
                     phaseMovement = Phase.RightMovement;
                 else
