@@ -25,9 +25,11 @@ public class GameManager : MonoBehaviour
     private bool IsVictory;
     private bool IsInRespawn;
 
+    [Header("Feature Boolean")]
     [ReadOnly] public bool Feature1HeartSound;
     [ReadOnly] public bool Feature2SublimImage;
-    [ReadOnly] public bool Feature3;
+    [ReadOnly] public bool Feature3ScreenShake;
+    public ScreenShake screenShakeScript;
     [ReadOnly] public bool Feature4;
     [ReadOnly] public bool Feature5;
     [ReadOnly] public bool Feature6;
@@ -68,7 +70,7 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.S))
             Feature2SublimImage = !Feature2SublimImage;
         if (Input.GetKeyDown(KeyCode.D))
-            Feature3 = !Feature3;
+            Feature3ScreenShake = !Feature3ScreenShake;
         if (Input.GetKeyDown(KeyCode.F))
             Feature4 = !Feature4;
         if (Input.GetKeyDown(KeyCode.G))
@@ -79,6 +81,11 @@ public class GameManager : MonoBehaviour
             Feature7 = !Feature7;
         if (Input.GetKeyDown(KeyCode.K))
             Feature8 = !Feature8;
+    }
+
+    public void UseScreenShake()
+    {
+        screenShakeScript.TriggerShake();
     }
 
     public bool GetIsInRespawn()

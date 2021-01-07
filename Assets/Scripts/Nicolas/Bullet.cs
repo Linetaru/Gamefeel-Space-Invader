@@ -63,6 +63,8 @@ public class Bullet : MonoBehaviour
         {
             if (bulletParent == BulletParent.Player)
             {
+                if(GameManager.instance.Feature3ScreenShake)
+                    GameManager.instance.UseScreenShake();
                 Destroy(other.gameObject);
                 Destroy(gameObject);
             }
