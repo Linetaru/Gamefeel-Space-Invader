@@ -122,4 +122,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletParent: 1
-  speed: 1.5
+  speed: 0.2

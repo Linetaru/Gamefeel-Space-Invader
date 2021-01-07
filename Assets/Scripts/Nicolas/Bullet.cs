@@ -11,9 +11,10 @@ public enum BulletParent{
 public class Bullet : MonoBehaviour
 {
     public BulletParent bulletParent;
-    public float speed = 2f;
+    public float speed = 0.2f;
 
     private Vector2 screenBounds;
+    private GameObject target;
 
     // Start is called before the first frame update
     void Start()
@@ -26,12 +27,30 @@ public class Bullet : MonoBehaviour
     {
         if (bulletParent == BulletParent.Player)
         {
+            if (GameManager.instance.Feature1HeartSound)
+            {
+                RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.up, 10000, LayerMask.GetMask("Enemy"));
+
+                if (hit.collider != null)
+                {
+                    if (hit.collider.gameObject.GetComponent<Enemy>() != null && target == null)
+                    {
+                        target = hit.collider.gameObject;
+                    }
+                }
+
+                if (target != null)
+                    if (target.transform.position.y - this.gameObject.transform.position.y > 0)
+                        SoundManager.instance.SetHeartSoundPitch(target.transform.position.y - this.gameObject.transform.position.y, this.gameObject);
+            }
+
             transform.Translate(new Vector3(0, 5 * Time.deltaTime * speed, 0));
             if (transform.position.y > screenBounds.y)
                 Destroy(gameObject, 0.1f);
         }
         else if (bulletParent == BulletParent.Ennemy)
         {
+
             transform.Translate(new Vector3(0, -5 * Time.deltaTime * speed, 0));
             if (transform.position.y < screenBounds.y * -1)
                 Destroy(gameObject, 0.1f);
