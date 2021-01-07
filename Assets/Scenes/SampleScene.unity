@@ -5569,6 +5569,11 @@ PrefabInstance:
       objectReference: {fileID: 598938060}
     - target: {fileID: 6493066532389896860, guid: 4c0a08a3b4b110544b10808fc4671ce2,
         type: 3}
+      propertyPath: backgroundEffect
+      value: 
+      objectReference: {fileID: 414807275}
+    - target: {fileID: 6493066532389896860, guid: 4c0a08a3b4b110544b10808fc4671ce2,
+        type: 3}
       propertyPath: screenShakeScript
       value: 
       objectReference: {fileID: 903049517}

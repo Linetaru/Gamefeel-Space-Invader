@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 217e9b7ab41029f46967843ec0ab5394, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4bc93479867158445958808c2278a221, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -118,6 +118,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Bullet: {fileID: 2685337641061627618, guid: e28f8b456ec228c488004e80d9d51251, type: 3}
+  classicSprite: {fileID: 21300000, guid: 8d8ce22f19ddf5241af108f9099588f5, type: 3}
+  emojiSprite: {fileID: 21300000, guid: 4bc93479867158445958808c2278a221, type: 3}
+  deadSprite: {fileID: 0}
+  deadEnemy: {fileID: 749118007204539180, guid: d1976545125c52442b121d6e61e3006c,
+    type: 3}
 --- !u!58 &4772411418513901165
 CircleCollider2D:
   m_ObjectHideFlags: 0

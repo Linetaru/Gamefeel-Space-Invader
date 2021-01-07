@@ -5,9 +5,8 @@ using UnityEngine;
 public class SoundManager : MonoBehaviour
 {
     public AudioSource heartSound;
-    public float startingPitch = 4;
     public float timeToDecrease = 5;
-    private GameObject bullet;
+    public bool canPlaySound;
 
     public static SoundManager instance;
 
@@ -23,16 +22,9 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    public void SetHeartSoundPitch(float distance, GameObject bulletObject = null)
+    public void SetHeartSoundPitch()
     {
-        bullet = bulletObject;
-        if (!heartSound.isPlaying)
-            heartSound.Play();
-        //timeToDecrease = distance;
-        if (heartSound.pitch > 0)
-        {
-            heartSound.pitch -= Time.deltaTime * (1 / distance);
-        }
+        canPlaySound = true;
     }
 
     // Start is called before the first frame update
@@ -43,10 +35,22 @@ public class SoundManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (bullet == null)
+        if (canPlaySound)
         {
-            heartSound.Stop();
-            heartSound.pitch = 1;
+            if (!heartSound.isPlaying)
+            heartSound.Play();
+        //timeToDecrease = distance;
+        
+            if (heartSound.pitch > 0)
+            {
+                heartSound.pitch -= Time.deltaTime * (1 / timeToDecrease);
+            }
+            else
+            {
+                heartSound.Stop();
+                heartSound.pitch = 1;
+                canPlaySound = false;
+            }
         }
     }
 }

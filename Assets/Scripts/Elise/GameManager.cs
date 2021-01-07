@@ -30,8 +30,10 @@ public class GameManager : MonoBehaviour
     [ReadOnly] public bool Feature2SublimImage;
     [ReadOnly] public bool Feature3ScreenShake;
     public ScreenShake screenShakeScript;
-    [ReadOnly] public bool Feature4;
-    [ReadOnly] public bool Feature5;
+    [ReadOnly] public bool Feature4EmojiSprite;
+    public List<GameObject> deadEmoji;
+    [ReadOnly] public bool Feature5BackgroundEffect;
+    public GameObject backgroundEffect;
     [ReadOnly] public bool Feature6;
     [ReadOnly] public bool Feature7;
     [ReadOnly] public bool Feature8;
@@ -55,6 +57,7 @@ public class GameManager : MonoBehaviour
         restartText.enabled = false;
         playerPosition = player.transform.position;
         lifeText.text = "Life : " + playerLife;
+        backgroundEffect.SetActive(false);
     }
 
     // Update is called once per frame
@@ -72,15 +75,27 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.D))
             Feature3ScreenShake = !Feature3ScreenShake;
         if (Input.GetKeyDown(KeyCode.F))
-            Feature4 = !Feature4;
+        {
+            Feature4EmojiSprite = !Feature4EmojiSprite;
+            if (deadEmoji.Count != 0)
+                foreach (GameObject go in deadEmoji)
+                {
+                    go.SetActive(Feature4EmojiSprite);
+                }
+        }
         if (Input.GetKeyDown(KeyCode.G))
-            Feature5 = !Feature5;
+        {
+            Feature5BackgroundEffect = !Feature5BackgroundEffect;
+            backgroundEffect.SetActive(Feature5BackgroundEffect);
+        }
         if (Input.GetKeyDown(KeyCode.H))
             Feature6 = !Feature6;
         if (Input.GetKeyDown(KeyCode.J))
             Feature7 = !Feature7;
         if (Input.GetKeyDown(KeyCode.K))
             Feature8 = !Feature8;
+
+
     }
 
     public void UseScreenShake()

@@ -27,22 +27,22 @@ public class Bullet : MonoBehaviour
     {
         if (bulletParent == BulletParent.Player)
         {
-            if (GameManager.instance.Feature1HeartSound)
-            {
-                RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.up, 10000, LayerMask.GetMask("Enemy"));
+            //if (GameManager.instance.Feature1HeartSound)
+            //{
+            //    RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.up, 10000, LayerMask.GetMask("Enemy"));
 
-                if (hit.collider != null)
-                {
-                    if (hit.collider.gameObject.GetComponent<Enemy>() != null && target == null)
-                    {
-                        target = hit.collider.gameObject;
-                    }
-                }
+            //    if (hit.collider != null)
+            //    {
+            //        if (hit.collider.gameObject.GetComponent<Enemy>() != null && target == null)
+            //        {
+            //            target = hit.collider.gameObject;
+            //        }
+            //    }
 
-                if (target != null)
-                    if (target.transform.position.y - this.gameObject.transform.position.y > 0)
-                        SoundManager.instance.SetHeartSoundPitch(target.transform.position.y - this.gameObject.transform.position.y, this.gameObject);
-            }
+            //    if (target != null)
+            //        if (target.transform.position.y - this.gameObject.transform.position.y > 0)
+            //            SoundManager.instance.SetHeartSoundPitch(target.transform.position.y - this.gameObject.transform.position.y, this.gameObject);
+            //}
 
             transform.Translate(new Vector3(0, 5 * Time.deltaTime * speed, 0));
             if (transform.position.y > screenBounds.y)
@@ -65,6 +65,9 @@ public class Bullet : MonoBehaviour
             {
                 if(GameManager.instance.Feature3ScreenShake)
                     GameManager.instance.UseScreenShake();
+                other.gameObject.GetComponent<Enemy>().OnDestroyed();
+                if (GameManager.instance.Feature1HeartSound)
+                    SoundManager.instance.SetHeartSoundPitch();
                 Destroy(other.gameObject);
                 Destroy(gameObject);
             }
