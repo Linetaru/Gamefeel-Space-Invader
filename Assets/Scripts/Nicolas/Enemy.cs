@@ -6,15 +6,29 @@ public class Enemy : MonoBehaviour
 {
     public GameObject Bullet;
 
+    public Sprite classicSprite;
+    public Sprite emojiSprite;
+    public Sprite deadSprite;
+
+    public GameObject deadEnemy;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        GetComponent<SpriteRenderer>().sprite = classicSprite;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(GameManager.instance.Feature4EmojiSprite && GetComponent<SpriteRenderer>().sprite != emojiSprite)
+        {
+            GetComponent<SpriteRenderer>().sprite = emojiSprite;
+        }
+        else if(!GameManager.instance.Feature4EmojiSprite && GetComponent<SpriteRenderer>().sprite == emojiSprite)
+        {
+            GetComponent<SpriteRenderer>().sprite = classicSprite;
+        }
     }
 
     public void Attack()
@@ -24,8 +38,13 @@ public class Enemy : MonoBehaviour
         go.GetComponent<Bullet>().bulletParent = BulletParent.Ennemy;
     }
 
-    private void OnDestroy()
+    public void OnDestroyed()
     {
         EnemyPackManager.instance.RemoveEnemy(this);
+        if (GameManager.instance.Feature4EmojiSprite)
+        {
+            GameObject go = Instantiate(deadEnemy, transform.position, Quaternion.identity);
+            GameManager.instance.deadEmoji.Add(go);
+        }
     }
 }
