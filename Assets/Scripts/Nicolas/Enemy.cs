@@ -46,5 +46,9 @@ public class Enemy : MonoBehaviour
             GameObject go = Instantiate(deadEnemy, transform.position, Quaternion.identity);
             GameManager.instance.deadEmoji.Add(go);
         }
+        if(GameManager.instance.Feature6DeadText)
+        {
+            GameManager.instance.deadText.MoveText();
+        }
     }
 }
