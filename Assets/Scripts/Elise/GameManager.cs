@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
     public GameObject backgroundEffect;
     [ReadOnly] public bool Feature6DeadText;
     public DeadText deadText;
-    [ReadOnly] public bool Feature7;
+    [ReadOnly] public bool Feature7PostProcess;
     [ReadOnly] public bool Feature8;
 
     private void Awake()
@@ -92,7 +92,7 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.H))
             Feature6DeadText = !Feature6DeadText;
         if (Input.GetKeyDown(KeyCode.J))
-            Feature7 = !Feature7;
+            Feature7PostProcess = !Feature7PostProcess;
         if (Input.GetKeyDown(KeyCode.K))
             Feature8 = !Feature8;
 

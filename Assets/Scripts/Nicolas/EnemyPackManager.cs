@@ -95,6 +95,7 @@ public class EnemyPackManager : MonoBehaviour
             {
                 if (enemy == killedEnemy)
                 {
+                    postProcess.GetComponent<PostProcessing>().colorSatur.enabled.value = GameManager.instance.Feature7PostProcess;
                     postProcess.GetComponent<PostProcessing>().colorSatur.saturation.value -= 3;
                     sublim.GetComponent<SubliminalPicture>().isDisplay = true;
                     list.enemiesList.Remove(killedEnemy);

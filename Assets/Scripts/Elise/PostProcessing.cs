@@ -19,4 +19,10 @@ public class PostProcessing : MonoBehaviour
         colorSatur.saturation.value = 0;
     }
 
+
+    void Update()
+    {
+
+    }
+
 }
