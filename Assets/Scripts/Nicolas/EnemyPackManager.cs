@@ -76,10 +76,10 @@ public class EnemyPackManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (CurrentNumberOfEnemy == 0)
-        {
-            GameManager.instance.Victory();
-        }
+        //if (CurrentNumberOfEnemy == 0)
+        //{
+        //    GameManager.instance.Victory();
+        //}
         if (!GameManager.instance.IsGameOver && !GameManager.instance.GetIsInRespawn())
         {
             MovementUpdate();

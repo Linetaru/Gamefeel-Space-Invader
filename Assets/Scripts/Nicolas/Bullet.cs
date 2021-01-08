@@ -82,10 +82,10 @@ public class Bullet : MonoBehaviour
                 Destroy(other.gameObject);
                 GameManager.instance.UpdateLife();
 
-                if (GameManager.instance.playerLife == 0)
-                {
-                    GameManager.instance.Defeat();
-                }
+                //if (GameManager.instance.playerLife == 0)
+                //{
+                //    GameManager.instance.Defeat();
+                //}
 
                 Destroy(gameObject);
             }
