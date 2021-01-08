@@ -42,6 +42,8 @@ public class EnemyPackManager : MonoBehaviour
 
     public Image sublim;
     public GameObject postProcess;
+    private float timerGrain = 0f;
+    private bool boolGrain = false;
 
     private void Awake()
     {
@@ -85,6 +87,26 @@ public class EnemyPackManager : MonoBehaviour
             MovementUpdate();
             //AttackUpdate();
         }
+
+        if (boolGrain)
+        {
+            timerGrain += Time.deltaTime;
+            if (postProcess.GetComponent<PostProcessing>().colorSatur.enabled.value)
+            {
+                postProcess.GetComponent<PostProcessing>().grain.intensity.value = 1;
+            }
+            else
+            {
+                postProcess.GetComponent<PostProcessing>().grain.intensity.value = 0;
+            }
+
+            if (timerGrain >= 1.5f)
+            {
+                postProcess.GetComponent<PostProcessing>().grain.intensity.value = 0;
+                boolGrain = false;
+                timerGrain = 0f;
+            }
+        }
     }
 
     void ShakeEnemyAfterDeathAround(RaycastHit2D hit)
@@ -117,6 +139,7 @@ public class EnemyPackManager : MonoBehaviour
                     postProcess.GetComponent<PostProcessing>().colorSatur.enabled.value = GameManager.instance.Feature7PostProcess;
                     postProcess.GetComponent<PostProcessing>().colorSatur.saturation.value -= 3;
                     sublim.GetComponent<SubliminalPicture>().isDisplay = true;
+                    boolGrain = true;
                     list.enemiesList.Remove(killedEnemy);
                     CurrentNumberOfEnemy--;
                     break;
