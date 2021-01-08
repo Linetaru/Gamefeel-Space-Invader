@@ -87,8 +87,27 @@ public class EnemyPackManager : MonoBehaviour
         }
     }
 
+    void ShakeEnemyAfterDeathAround(RaycastHit2D hit)
+    {
+        if (hit.collider != null)
+        {
+            if (hit.collider.gameObject.GetComponent<Enemy>() != null)
+            {
+                hit.collider.gameObject.GetComponent<ScreenShake>().TriggerShake();
+            }
+        }
+    }
+
     public void RemoveEnemy(Enemy killedEnemy)
     {
+
+        //RaycastHit2D hit = Physics2D.Raycast(killedEnemy.transform.position, Vector2.up, 1000, LayerMask.GetMask("Enemy"));
+        //ShakeEnemyAfterDeathAround(hit);
+        //RaycastHit2D hit2 = Physics2D.Raycast(killedEnemy.transform.position, Vector2.right, 1000, LayerMask.GetMask("Enemy"));
+        //ShakeEnemyAfterDeathAround(hit2);
+        //RaycastHit2D hit3 = Physics2D.Raycast(killedEnemy.transform.position, Vector2.left, 1000, LayerMask.GetMask("Enemy"));
+        //ShakeEnemyAfterDeathAround(hit3);
+
         foreach (EnemyList list in EnemyPackList)
         {
             foreach (Enemy enemy in list.enemiesList)
@@ -100,7 +119,18 @@ public class EnemyPackManager : MonoBehaviour
                     sublim.GetComponent<SubliminalPicture>().isDisplay = true;
                     list.enemiesList.Remove(killedEnemy);
                     CurrentNumberOfEnemy--;
-                    return;
+                    break;
+                }
+            }
+        }
+
+        if (GameManager.instance.Feature8EnemyShakeBooty)
+        {
+            foreach (EnemyList list in EnemyPackList)
+            {
+                foreach (Enemy enemy in list.enemiesList)
+                {
+                    enemy.gameObject.GetComponent<ScreenShake>().TriggerShake();
                 }
             }
         }

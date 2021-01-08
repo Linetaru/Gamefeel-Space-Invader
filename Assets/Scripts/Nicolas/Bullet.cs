@@ -68,8 +68,8 @@ public class Bullet : MonoBehaviour
                 other.gameObject.GetComponent<Enemy>().OnDestroyed();
                 if (GameManager.instance.Feature1HeartSound)
                     SoundManager.instance.SetHeartSoundPitch();
-                if(GameManager.instance.Feature8CrySound)
-                    SoundManager.instance.PlayCrySound();
+                //if(GameManager.instance.Feature8CrySound)
+                //    SoundManager.instance.PlayCrySound();
                 Destroy(other.gameObject);
                 Destroy(gameObject);
             }
