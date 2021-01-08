@@ -44,6 +44,7 @@ public class EnemyPackManager : MonoBehaviour
     public GameObject postProcess;
     private float timerGrain = 0f;
     private bool boolGrain = false;
+    private bool SwitchBool;
 
     private void Awake()
     {
@@ -190,9 +191,15 @@ public class EnemyPackManager : MonoBehaviour
             case Phase.DownMovement:
                 transform.position += Vector3.up * 0.5f;
                 if (transform.position.x <= screenBounds.x * -1)
+                {
                     phaseMovement = Phase.RightMovement;
+                    transform.position += Vector3.right * 0.5f;
+                }
                 else
+                {
                     phaseMovement = Phase.LeftMovement;
+                    transform.position += Vector3.left * 0.5f;
+                }
                 DownActivated = true;
                 break;
             case Phase.RightMovement:
