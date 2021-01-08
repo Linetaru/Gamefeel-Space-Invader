@@ -34,9 +34,10 @@ public class GameManager : MonoBehaviour
     public List<GameObject> deadEmoji;
     [ReadOnly] public bool Feature5BackgroundEffect;
     public GameObject backgroundEffect;
-    [ReadOnly] public bool Feature6;
-    [ReadOnly] public bool Feature7;
-    [ReadOnly] public bool Feature8;
+    [ReadOnly] public bool Feature6DeadText;
+    public DeadText deadText;
+    [ReadOnly] public bool Feature7PostProcess;
+    [ReadOnly] public bool Feature8EnemyShakeBooty;
 
     private void Awake()
     {
@@ -89,11 +90,11 @@ public class GameManager : MonoBehaviour
             backgroundEffect.SetActive(Feature5BackgroundEffect);
         }
         if (Input.GetKeyDown(KeyCode.H))
-            Feature6 = !Feature6;
+            Feature6DeadText = !Feature6DeadText;
         if (Input.GetKeyDown(KeyCode.J))
-            Feature7 = !Feature7;
+            Feature7PostProcess = !Feature7PostProcess;
         if (Input.GetKeyDown(KeyCode.K))
-            Feature8 = !Feature8;
+            Feature8EnemyShakeBooty = !Feature8EnemyShakeBooty;
 
 
     }

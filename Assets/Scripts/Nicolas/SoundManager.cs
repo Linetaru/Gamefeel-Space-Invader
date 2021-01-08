@@ -6,7 +6,11 @@ public class SoundManager : MonoBehaviour
 {
     public AudioSource heartSound;
     public float timeToDecrease = 5;
-    public bool canPlaySound;
+    private bool canPlaySound;
+
+    public AudioSource crySound1;
+    public AudioSource crySound2;
+    public AudioSource crySound3;
 
     public static SoundManager instance;
 
@@ -25,6 +29,26 @@ public class SoundManager : MonoBehaviour
     public void SetHeartSoundPitch()
     {
         canPlaySound = true;
+    }
+
+    public void PlayCrySound()
+    {
+        int random = Random.Range(1, 4);
+        switch(random)
+        {
+            case 1:
+                if (!crySound1.isPlaying && !crySound2.isPlaying && !crySound3.isPlaying)
+                    crySound1.Play();
+                break;
+            case 2:
+                if (!crySound1.isPlaying && !crySound2.isPlaying && !crySound3.isPlaying)
+                    crySound2.Play();
+                break;
+            case 3:
+                if (!crySound1.isPlaying && !crySound2.isPlaying && !crySound3.isPlaying)
+                    crySound3.Play();
+                break;
+        }
     }
 
     // Start is called before the first frame update
@@ -51,6 +75,8 @@ public class SoundManager : MonoBehaviour
                 heartSound.pitch = 1;
                 canPlaySound = false;
             }
+
+            
         }
     }
 }

@@ -68,6 +68,8 @@ public class Bullet : MonoBehaviour
                 other.gameObject.GetComponent<Enemy>().OnDestroyed();
                 if (GameManager.instance.Feature1HeartSound)
                     SoundManager.instance.SetHeartSoundPitch();
+                //if(GameManager.instance.Feature8CrySound)
+                //    SoundManager.instance.PlayCrySound();
                 Destroy(other.gameObject);
                 Destroy(gameObject);
             }
@@ -80,10 +82,10 @@ public class Bullet : MonoBehaviour
                 Destroy(other.gameObject);
                 GameManager.instance.UpdateLife();
 
-                if (GameManager.instance.playerLife == 0)
-                {
-                    GameManager.instance.Defeat();
-                }
+                //if (GameManager.instance.playerLife == 0)
+                //{
+                //    GameManager.instance.Defeat();
+                //}
 
                 Destroy(gameObject);
             }

@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ScreenShake : MonoBehaviour
-{ 
+{
+    public GameObject shakeObject;
 
     // Desired duration of the shake effect
     public float shakeDurationMax = 2.0f;
@@ -20,7 +21,8 @@ public class ScreenShake : MonoBehaviour
 
     void OnEnable()
     {
-        initialPosition = Camera.main.transform.localPosition;
+        shakeObject = this.gameObject;
+        initialPosition = shakeObject.transform.localPosition;
     }
 
     // Start is called before the first frame update
@@ -33,14 +35,14 @@ public class ScreenShake : MonoBehaviour
     {
         if (shakeDuration > 0)
         {
-            Camera.main.transform.localPosition = initialPosition + Random.insideUnitSphere * shakeMagnitude;
+            shakeObject.transform.localPosition = initialPosition + Random.insideUnitSphere * shakeMagnitude;
 
             shakeDuration -= Time.deltaTime * dampingSpeed;
         }
         else
         {
             shakeDuration = 0f;
-            Camera.main.transform.localPosition = initialPosition;
+            shakeObject.transform.localPosition = initialPosition;
         }
     }
     public void TriggerShake()
