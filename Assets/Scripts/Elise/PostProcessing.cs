@@ -8,6 +8,7 @@ public class PostProcessing : MonoBehaviour
 
     public PostProcessVolume volume;
     public ColorGrading colorSatur;
+    public Grain grain;
 
     public GameObject packEnnemy;
 
@@ -15,8 +16,10 @@ public class PostProcessing : MonoBehaviour
     void Start()
     {
         volume.profile.TryGetSettings(out colorSatur);
+        volume.profile.TryGetSettings(out grain);
 
         colorSatur.saturation.value = 0;
+        grain.intensity.value = 0;
     }
 
 
