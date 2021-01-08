@@ -152,6 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3de261741a97194f80ef45b47cf9f33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shakeDurationMax: 2
-  shakeMagnitude: 0.7
+  shakeObject: {fileID: 0}
+  shakeDurationMax: 3
+  shakeMagnitude: 0.05
   dampingSpeed: 1
