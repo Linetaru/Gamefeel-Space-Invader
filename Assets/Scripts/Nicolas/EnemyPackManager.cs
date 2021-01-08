@@ -101,7 +101,7 @@ public class EnemyPackManager : MonoBehaviour
                 postProcess.GetComponent<PostProcessing>().grain.intensity.value = 0;
             }
 
-            if (timerGrain >= 1.5f)
+            if (timerGrain >= 2.5f)
             {
                 postProcess.GetComponent<PostProcessing>().grain.intensity.value = 0;
                 boolGrain = false;
@@ -189,7 +189,7 @@ public class EnemyPackManager : MonoBehaviour
                 transform.Translate(new Vector2(-speed * Time.deltaTime, 0));
                 break;
             case Phase.DownMovement:
-                transform.position += Vector3.up * 0.1f;
+                transform.position += Vector3.up * 0.25f;
                 if (transform.position.x <= screenBounds.x * -1)
                 {
                     phaseMovement = Phase.RightMovement;
